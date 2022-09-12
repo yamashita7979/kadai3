@@ -17,4 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::post('hello', 'App\Http\Controllers\HelloController@post');
+Route::get('/janken', 'App\Http\Controllers\JankenController@index');
+
+Route::post('/janken', 'App\Http\Controllers\JankenController@result');
+
+Route::get('/again', 'App\Http\Controllers\JankenController@again');
