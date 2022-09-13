@@ -9,6 +9,7 @@ class CalculatorController extends Controller
     public function index(Request $request)
     {
         $result = '';
+        // 各セッション変数を初期化する
         if($request->session()->get('num1') == null){
             $request->session()->put('num1', '');
         }
@@ -26,8 +27,7 @@ class CalculatorController extends Controller
 
     public function calculate(Request $request)
     {
-        // num1: num1が'',かつ num2が''の場合に使われる
-        // num2: num1が''でない, かつ num2が''の場合に使われる
+        // 利用するセッション変数（num1, num2, ope）
 
         $result = '';
         if($request->session()->get('num1') == null){
@@ -40,8 +40,7 @@ class CalculatorController extends Controller
             $request->session()->put('ope', '');
         }
 
-        // セッション保存すべき値は３つ要る
-
+        // 'AE'ボタンクリック時
         if($request->get('clear')){
             $request->session()->put('num1', '');
             $request->session()->put('num2', '');
@@ -51,23 +50,24 @@ class CalculatorController extends Controller
             ]);
         }
 
-        // valueが=なら（計算する）
+        // '＝'ボタンクリック時
         if($request->get('equal') && $request->session()->get('ope')
             && $request->session()->get('num1') && $request->session()->get('num2')){
 
-            $ses_num1 = $request->session()->get('num1');
-            $ses_num2 = $request->session()->get('num2');
-            $ses_ope = $request->session()->get('ope');
-            if($ses_ope == '+'){
-                $result =  intval($ses_num1) + intval($ses_num2);
-            }elseif($ses_ope == '-'){
-                $result =  intval($ses_num1) - intval($ses_num2);
-            }elseif($ses_ope == '÷'){
-                $result =  intval($ses_num1) / intval($ses_num2);
-            }elseif($ses_ope == '×'){
-                $result =  intval($ses_num1) * intval($ses_num2);
+            $num1_ses = $request->session()->get('num1');
+            $num2_ses = $request->session()->get('num2');
+            $ope_ses = $request->session()->get('ope');
+            if($ope_ses == '+'){
+                $result =  intval($num1_ses) + intval($num2_ses);
+            }elseif($ope_ses == '-'){
+                $result =  intval($num1_ses) - intval($num2_ses);
+            }elseif($ope_ses == '÷'){
+                $result =  intval($num1_ses) / intval($num2_ses);
+            }elseif($ope_ses == '×'){
+                $result =  intval($num1_ses) * intval($num2_ses);
             }
 
+            // セッション変数をリセット
             $request->session()->put('num1', '');
             $request->session()->put('num2', '');
             $request->session()->put('ope', '');
@@ -89,7 +89,7 @@ class CalculatorController extends Controller
         }
 
         // 連続して数字が入力される場合
-        if($request->get('num') && $request->session()->get('num1') == ''
+        if($request->get('num') && $request->session()->get('num1') != ''
             && $request->session()->get('ope') == '' && $request->session()->get('num2') == ''){
 
             $num_post = $request->get('num');
@@ -102,7 +102,7 @@ class CalculatorController extends Controller
                 ]);
             }
             // num2に入力される
-            if($request->session()->get('') != ''){
+            if($request->session()->get('num2') != ''){
                 $request->session()->put('num2', $num_post);
                 return view('calculator.index', [
                     'result' => $request->session()->get('num2'),
@@ -121,63 +121,59 @@ class CalculatorController extends Controller
             ]);
         }
 
-        // 複数回演算する場合
+        // 複数回数演算する場合
         if($request->get('ope') && $request->session()->get('num1') != ''
-        && $request->session()->get('ope') != ''
-        //  \&& $request->session()->get('num2') != ''
-         ){
+            && $request->session()->get('ope') != ''){
+
             $ope_post = $request->get('ope');
             $request->session()->put('ope', $ope_post);
 
-            $ses_num1 = $request->session()->get('num1');
-            $ses_num2 = $request->session()->get('num2');
-            $ses_ope = $request->session()->get('ope');
-
-            if($ses_ope == '+'){
-                $result_temp =  intval($ses_num1) + intval($ses_num2);
-            }elseif($ses_ope == '-'){
-                $result_temp =  intval($ses_num1) - intval($ses_num2);
-            }elseif($ses_ope == '÷'){
-                $result_temp =  intval($ses_num1) / intval($ses_num2);
-            }elseif($ses_ope == '×'){
-                $result_temp =  intval($ses_num1) * intval($ses_num2);
+            $num1_ses = $request->session()->get('num1');
+            $num2_ses = $request->session()->get('num2');
+            $ope_ses = $request->session()->get('ope');
+            if($ope_ses == '+'){
+                $result_temp =  intval($num1_ses) + intval($num2_ses);
+            }elseif($ope_ses == '-'){
+                $result_temp =  intval($num1_ses) - intval($num2_ses);
+            }elseif($ope_ses == '÷'){
+                $result_temp =  intval($num1_ses) / intval($num2_ses);
+            }elseif($ope_ses == '×'){
+                $result_temp =  intval($num1_ses) * intval($num2_ses);
             }
             
             $request->session()->put('num1', $result_temp);
             $request->session()->put('num2', '');
 
             return view('calculator.index', [
-                'result' => $ses_ope,
+                'result' => $ope_ses,
             ]);
         }
 
-        // 演算される場合
+        // 演算する場合
         if($request->get('num') && $request->session()->get('num1') != ''
             && $request->session()->get('ope') != '' && $request->session()->get('num2') != ''){
 
-                $num_post = $request->get('num');
-                $request->session()->put('num2', $num_post);
+            $num_post = $request->get('num');
+            $request->session()->put('num2', $num_post);
 
-                // 以下は未完成、num1とnum2で演算した結果を表示させたい
-                $ses_num1 = $request->session()->get('num1');
-                $ses_num2 = $request->session()->get('num2');
-                $ses_ope = $request->session()->get('ope');
-                if($ses_ope == '+'){
-                    $result_temp =  intval($ses_num1) + intval($ses_num2);
-                }elseif($ses_ope == '-'){
-                    $result_temp =  intval($ses_num1) - intval($ses_num2);
-                }elseif($ses_ope == '÷'){
-                    $result_temp =  intval($ses_num1) / intval($ses_num2);
-                }elseif($ses_ope == '×'){
-                    $result_temp =  intval($ses_num1) * intval($ses_num2);
-                }
-        
-                $request->session()->put('num1', $result_temp);
-                $request->session()->put('num2', '');
-                return view('calculator.index', [
-                    'result' => $result_temp,
-                    // 'result' => '演算される場合を表示した',
-                ]);    
+            $num1_ses = $request->session()->get('num1');
+            $num2_ses = $request->session()->get('num2');
+            $ope_ses = $request->session()->get('ope');
+            if($ope_ses == '+'){
+                $result_temp =  intval($num1_ses) + intval($num2_ses);
+            }elseif($ope_ses == '-'){
+                $result_temp =  intval($num1_ses) - intval($num2_ses);
+            }elseif($ope_ses == '÷'){
+                $result_temp =  intval($num1_ses) / intval($num2_ses);
+            }elseif($ope_ses == '×'){
+                $result_temp =  intval($num1_ses) * intval($num2_ses);
+            }
+    
+            $request->session()->put('num1', $result_temp);
+            $request->session()->put('num2', '');
+            return view('calculator.index', [
+                'result' => $result_temp,
+            ]);    
         }
 
         // 2つ目の数字を入力する場合
@@ -199,11 +195,15 @@ class CalculatorController extends Controller
             return view('calculator.index', [
                 'result' => $ope_post,
             ]);
-
         }
 
-        return view('calculator.index', [
-            'result' => 'とりあえず表示',
-        ]);    
-}
+        // 連続で演算子が入力される場合
+        if($request->get('ope') && $request->session()->get('ope')){
+            $ope_post = $request->get('ope');
+            $request->session()->put('ope', $ope_post);
+            return view('calculator.index', [
+                'result' => $request->session()->get('ope'),
+            ]);
+        }    
+    }
 }
