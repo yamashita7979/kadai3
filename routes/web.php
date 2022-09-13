@@ -17,7 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/calculator', 'App\Http\Controllers\CalculatorController@index');
-
-Route::get('/calculate', 'App\Http\Controllers\CalculatorController@calculate');
-Route::post('/calculate', 'App\Http\Controllers\CalculatorController@calculate');
+Route::get('/typingSite', 'App\Http\Controllers\HomeController@index');

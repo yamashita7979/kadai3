@@ -3,5 +3,5 @@
 @section('title', 'タイピング練習サイト')
 
 @section('content')
-スタート画面
+削除画面
 @endsection
