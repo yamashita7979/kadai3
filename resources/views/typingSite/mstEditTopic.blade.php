@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', '編集画面')
+@section('title', '編集選択画面')
 
 @section('stylesheet')
 <link rel="stylesheet" href="{{asset('/assets/css/mstEditTopic.css')}}">
@@ -8,14 +8,19 @@
 
 @section('content')
 <table>
-    <tr><th> 編集画面 <a href="{{ url('/typingSite') }}">ホームへ</a></th></tr>
-    @foreach ($topics as $topic)
+    <form action="/editDisplay" class="form-remove" type="post">
+        @csrf
+        <tr><th>
+            <input type="submit" value="編集">
+        編集画面 <a href="{{ url('/typingSite') }}">ホームへ</a></th></tr>
+@foreach ($topics as $topic)
         <tr>
             <td>
-                <input type="checkbox" name="{{ $topic->id }}">
+                <input type="radio" name="topic_id" value="{{ $topic->id }}">
                 {{ $topic->getData() }}
             </td>
         </tr>
     @endforeach
+</form>
 </table>
 @endsection

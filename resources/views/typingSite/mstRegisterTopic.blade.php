@@ -7,11 +7,9 @@
 @endsection
 
 @section('content')
-@if(Auth::check())
 <form action="/create" class="content" method="post">
     @csrf
     <div>
-        <p>※本番では、ホーム画面からの遷移で一覧に飛びたい</p>
         <p>登録するセンテンスを入力してください。</p>
     </div>
     <div>
@@ -27,11 +25,4 @@
         <a href="{{ url('/typingSite') }}">ホームへ</a>
     </div>
 </form>
-@else
-<p>ログインしていません。(
-    <a href="/login">ログイン</a>|
-    <a href="/register">ユーザー登録
-    </a>)
-</p>
-@endif
 @endsection

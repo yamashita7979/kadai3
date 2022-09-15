@@ -23,11 +23,15 @@ class MstRegisterTopicController extends Controller
     }
 
     public function create(Request $request)
-    {
-        //　DBに登録
+    {        
+        if(!$request->japanese_word || !$request->english_word){
+            return redirect('/typingSite/mst/register');
+        }
+
         $topic = new Topic();
         $form = $request->all();
         unset($form['_token']);
+        // DBに登録
         $topic->fill($form)->save();
 
         return redirect('/typingSite/mst/list');
