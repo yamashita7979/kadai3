@@ -1,7 +1,7 @@
 <html>
     <head>
-        <title>@yield('title')</title>
-        <link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
+        <title>@yield('title')</title>        
+        @yield('stylesheet')
     </head>
     <body>
         @yield('content')

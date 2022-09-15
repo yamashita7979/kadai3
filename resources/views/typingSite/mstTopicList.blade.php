@@ -1,7 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('title', 'タイピング練習サイト')
+@section('title', 'お題一覧画面')
 
 @section('content')
-お題一覧画面
+<table>
+    <tr><th>登録センテンス一覧 <a href="{{ url('/typingSite') }}">ホームへ</a></th></tr>
+    @foreach ($topics as $topic)
+        <tr>
+            <td>
+                {{ $topic->getData() }}
+            </td>
+        </tr>
+    @endforeach
+</table>
 @endsection
