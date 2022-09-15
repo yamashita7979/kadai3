@@ -38,10 +38,14 @@ Route::get('/create', 'App\Http\Controllers\MstRegisterTopicController@create');
 Route::post('/create', 'App\Http\Controllers\MstRegisterTopicController@create');
 
 // 管理画面機能
-Route::get('remove', 'App\Http\Controllers\MstDeleteTopicController@remove');
-Route::post('remove', 'App\Http\Controllers\MstDeleteTopicController@remove');
+Route::get('/remove', 'App\Http\Controllers\MstDeleteTopicController@remove');
+Route::post('/remove', 'App\Http\Controllers\MstDeleteTopicController@remove');
+Route::get('/editDisplay', 'App\Http\Controllers\MstEditTopicController@editDisplay');
+Route::post('/editDisplay', 'App\Http\Controllers\MstEditTopicController@editDisplay');
+Route::get('/update', 'App\Http\Controllers\MstEditTopicController@update');
+Route::post('/update', 'App\Http\Controllers\MstEditTopicController@update');
 
-// ユーザー登録
+// ユーザー登
 Route::get('/userCreate', 'App\Http\Controllers\UserRegistController@create');
 Route::post('/userCreate', 'App\Http\Controllers\UserRegistController@create');
 
