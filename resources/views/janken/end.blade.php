@@ -26,9 +26,7 @@
         <h1>{{ $param['resultMsg'] }}</h1>
     </div>
     <div>
-        <form action="/again" method="get">
-        <input type="submit" class="submit-btn-parent" value="もう一度">
-        </form>
+        <a href="/janken" class="submit-btn-parent" ><button type="button">もう一度</button></a>
     </div>
 </div>
 @endsection

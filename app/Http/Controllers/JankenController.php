@@ -58,10 +58,4 @@ class JankenController extends Controller
             return $drawMsg;
         }
     }
-
-    // ホーム画面に戻る
-    public function again()
-    {
-        return view('janken.start');
-    }
 }

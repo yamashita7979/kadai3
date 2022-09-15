@@ -20,5 +20,3 @@ Route::get('/', function () {
 Route::get('/janken', 'App\Http\Controllers\JankenController@index');
 
 Route::post('/janken', 'App\Http\Controllers\JankenController@result');
-
-Route::get('/again', 'App\Http\Controllers\JankenController@again');
