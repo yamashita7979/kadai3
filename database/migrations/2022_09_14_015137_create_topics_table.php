@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateTopicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('topics', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('name')->nullable(false);
-            $table->string('email')->unique();
-            $table->string('password')->nullable(false);
+            $table->bigInteger('user_id')->nullable(true);
+            $table->string('japanese_word')->nullable(false);
+            $table->string('english_word')->nullable(false);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('topics');
     }
-};
+}
