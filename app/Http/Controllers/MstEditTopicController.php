@@ -18,7 +18,7 @@ class MstEditTopicController extends Controller
             return view('/typingSite/login');
         }
 
-        $topics = Topic::all();
+        $topics = Topic::paginate(5);
         return view('typingSite.mstEditTopic', [
             'topics' => $topics,
         ]);

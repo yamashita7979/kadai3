@@ -9,17 +9,11 @@ class PlayController extends Controller
 {
     // 第1問目を表示する
     public function play(Request $request){
-
-        // $request->session()->flush();
-
         // セッションのリセット（削除）
-        if($request->session()->has('vals')){
-            $request->session()->forget([
-                "vals.0", "vals.1", "vals.2", "vals.3", "vals.4"
-            ]);
-
-            $request->session()->forget('count');
-        }
+        $request->session()->forget('vals');
+        $request->session()->forget('count');
+        $request->session()->forget('judgment_flag');
+        $request->session()->forget('correct_input');
 
         // ランダムで選んだ５トピックスをセッション保存しておく
         $topic = new Topic();
@@ -67,9 +61,11 @@ class PlayController extends Controller
         if($count == 5){
             $vals = $request->session()->get('vals');
             $judgment_flag = $request->session()->get('judgment_flag');
+            $info_correct = $this->percentageOfCorrect();
             $results = array(
                 "vals" => $vals,
-                "judgment_flag" => $judgment_flag
+                "judgment_flag" => $judgment_flag,
+                "info_correct" => $info_correct,
             );
             return view('typingSite.result', [
                 'results' => $results
@@ -91,7 +87,33 @@ class PlayController extends Controller
             return 0;
         }
         if($input == $english_topic){
+            // 正答数をカウントするために、セッション保存しておく
+            session()->push('correct_input', $input);
             return 1;
         }
     }
+
+    // 正解数と正解率を返す
+    public function percentageOfCorrect()
+    {
+        // 正解数が1問以上の場合
+        $correct_input = session()->get('correct_input');
+        if($correct_input){
+            $count = count($correct_input);
+            $percentage = $count / 5 * 100;
+            $info_correct = [
+                'count' => $count,
+                'percentage' => $percentage
+            ];
+            return $info_correct;
+        }
+
+        // 正解数が0問の場合
+        $info_correct = [
+            'count' => 0,
+            'percentage' => 0
+        ];
+        return $info_correct;
+}
+
 }

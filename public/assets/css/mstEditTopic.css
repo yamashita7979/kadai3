@@ -2,14 +2,22 @@ body {
     width: 100%;
     position: relative;
     text-align: center;
-    /* border: solid; */
 }
 .content {
     position: absolute;
     display: inline-block;
-    top: 40%;
+    top: 30%;
     left: 38%; 
 }
 .form-remove{
     display: inline;
+}
+.page{
+    position: absolute;
+    display: inline-block;
+    top: 60%;
+    left: 38%;  
+}
+.pagination li {
+    display: inline-block;
 }

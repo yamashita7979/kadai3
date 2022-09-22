@@ -2,28 +2,13 @@ body {
     width: 100%;
     position: relative;
     text-align: center;
-    border: solid;
 }
 .content {
     position: absolute;
     display: inline-block;
-    top: 20%;
+    top: 10%;
     left: 38%; 
 }
-/* .textbox{
-    font-size: 17px;
-    border: 1px solid gray;
-    height: 30px;
-    width: 220px;
-}
-.button{
-    height: 47px;
-    width: 47px;
-    margin: 2px 2px;
-    background-color: #99CC33;
-    border: 1px solid gray;
-    border-radius: 2px;
-} */
 a{
     text-decoration: none;
 }

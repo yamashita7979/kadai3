@@ -18,8 +18,7 @@ class MstTopicListController extends Controller
             return view('/typingSite/login');
         }
 
-        $sort = $request->sort;
-        $topics = Topic::orderBy($sort, 'asc')->paginate(5);
+        $topics = Topic::paginate(5);
         return view('typingSite.mstTopicList', [
             'topics' => $topics,
         ]);

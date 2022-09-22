@@ -2,15 +2,27 @@
 
 @section('title', '結果画面')
 
+@section('stylesheet')
+<link rel="stylesheet" href="{{asset('/assets/css/result.css')}}">
+@endsection
+
 @section('content')
-<table>
-    <tr><th>結果一覧</th></tr>
+<div class="title">
+    <h3>結果一覧</h3>
+</div>
+
+<table class="content">
+    <tr>
+        <td><p class="seitoritsu">正答率</p></td>
+        <td><p class="percentage">{{ $results["info_correct"]['percentage'] }}%</p></td>
+        <td><p class="count">5問中{{ $results["info_correct"]['count'] }}問</p></td>
+    </tr>
 
     @for($i=0; $i<5; $i++)
 
     <tr>
         <td>
-        <p>{{ $i + 1 }}</p>
+        <p class="number">{{ $i + 1 }}</p>
         </td>
         <td>
             @if($results["judgment_flag"][$i] == "0")
@@ -25,5 +37,8 @@
 
     @endfor
 </table>
-<a href="/typingSite/play"><button type="button">もう一度遊ぶ</button></a>
+
+<div>
+    <a href="/typingSite/play" class="back-btn"><button type="button">もう一度遊ぶ</button></a> 
+</div>
 @endsection

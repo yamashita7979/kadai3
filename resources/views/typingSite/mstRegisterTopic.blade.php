@@ -12,17 +12,17 @@
     <div>
         <p>登録するセンテンスを入力してください。</p>
     </div>
-    <div>
+    <div class="japanese-word">
         <label>日本語文<input type="text" name="japanese_word"></label>
     </div>
-    <div>
+    <div class="english-word">
         <label>英語文<input type="text" name="english_word"></label>
     </div>
     <div>
         <input type="submit" value="確定">
     </div>
-    <div>
-        <a href="{{ url('/typingSite') }}">ホームへ</a>
-    </div>
 </form>
+<div class="back-btn">
+    <a href="{{ url('/typingSite') }}">ホームへ</a>
+</div>
 @endsection

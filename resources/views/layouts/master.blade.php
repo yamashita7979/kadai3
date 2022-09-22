@@ -2,9 +2,10 @@
     <head>
         <title>@yield('title')</title>        
         @yield('stylesheet')
+        <link rel="stylesheet" href="{{asset('/assets/css/master.css')}}">
     </head>
     <body>
-        <div>
+        <div class="header">
             <a href="/typingSite/mst/list" class="to-list">一覧</a>
             <a href="/typingSite/mst/register" class="to-regist">登録</a>
             <a href="/typingSite/mst/edit" class="to-edit">編集</a>

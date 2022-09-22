@@ -9,7 +9,6 @@ class UserRegistController extends Controller
 {
     public function userRegist()
     {
-        // return view('typingSite.userRegistration');
         return view('auth.register');
     }
 

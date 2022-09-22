@@ -1,0 +1,24 @@
+.header{
+    position: absolute;
+    display: inline-block;
+    top: 20%;
+    left: 0%;
+    background-color: darkgray;
+    width: 100%;
+}
+.header a{
+    font-size: 20px;
+    margin: 0 10px 0 10px;
+}
+.japanese-word{
+    margin-bottom: 10px;
+}
+.english-word{
+    margin-bottom: 10px; 
+}
+.back-btn{
+    position: absolute;
+    display: inline-block;
+    top: 70%;
+    left: 47%; 
+}
