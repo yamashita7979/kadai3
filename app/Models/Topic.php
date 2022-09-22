@@ -23,4 +23,10 @@ class Topic extends Model
     {
         return $this->japanese_word . ':' . $this->english_word;;
     }
+
+    public function randomFiveTopics()
+    {
+        $five_topics = Topic::inRandomOrder()->take(5)->get();
+        return $five_topics;
+    }
 }

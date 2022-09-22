@@ -7,12 +7,13 @@
 @endsection
 
 @section('content')
-<table>
+<table class="content">
     <form action="/editDisplay" class="form-remove" type="post">
         @csrf
         <tr><th>
             <input type="submit" value="編集">
-        編集画面 <a href="{{ url('/typingSite') }}">ホームへ</a></th></tr>
+            編集画面
+        </th></tr>
 @foreach ($topics as $topic)
         <tr>
             <td>
@@ -23,4 +24,10 @@
     @endforeach
 </form>
 </table>
+<div class="page">
+    {{ $topics->links() }}
+</div>
+<div class="back-btn">
+    <a href="{{ url('/typingSite') }}">ホームへ</a>
+</div>
 @endsection

@@ -1,0 +1,39 @@
+body {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    top: 60px;
+}
+.content{
+    position: absolute;
+    display: inline-block;
+    top: 17%;
+    left: 35%; 
+    border-color: black;
+    border-collapse: collapse;
+}
+.title{
+    position: absolute;
+    display: inline-block;
+    top: 5%;
+    left: 45%; 
+}
+.seitoritsu{
+    padding: 0 5px 0 75px;
+}
+.percentage{
+    padding-right: 5px;
+}
+.count{
+    padding-right: 5px;
+}
+.number{
+    padding-left: 75px;
+}
+.back-btn{
+    margin-top: 100px;
+    position: absolute;
+    display: inline-block;
+    top: 200px;
+    left: 45%; 
+}

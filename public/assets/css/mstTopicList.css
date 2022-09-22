@@ -6,9 +6,18 @@ body {
 .content {
     position: absolute;
     display: inline-block;
-    top: 40%;
-    left: 38%; 
+    top: 35%;
+    left: 35%; 
 }
 .form-remove{
     display: inline;
+}
+.page{
+    position: absolute;
+    display: inline-block;
+    top: 60%;
+    left: 38%;  
+}
+.pagination li {
+    display: inline-block;
 }

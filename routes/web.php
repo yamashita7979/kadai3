@@ -27,15 +27,9 @@ Route::get('/typingSite/mst/delete', 'App\Http\Controllers\MstDeleteTopicControl
 Route::get('/typingSite/mst/edit', 'App\Http\Controllers\MstEditTopicController@edit');
 Route::get('/typingSite/mst/register', 'App\Http\Controllers\MstRegisterTopicController@register');
 Route::get('/typingSite/mst/list', 'App\Http\Controllers\MstTopicListController@list');
-Route::get('/typngSite/play', 'App\Http\Controllers\PlayController@play');
-Route::get('/typingSite/result', 'App\Http\Controllers\ResultController@result');
+Route::get('/typingSite/play', 'App\Http\Controllers\PlayController@play');
 Route::get('/typingSite/login', 'App\Http\Controllers\LoginController@login');
 Route::get('/typingSite/userRegist', 'App\Http\Controllers\UserRegistController@userRegist');
-
-
-// センテンス登録
-Route::get('/create', 'App\Http\Controllers\MstRegisterTopicController@create');
-Route::post('/create', 'App\Http\Controllers\MstRegisterTopicController@create');
 
 // 管理画面機能
 Route::get('/remove', 'App\Http\Controllers\MstDeleteTopicController@remove');
@@ -45,9 +39,17 @@ Route::post('/editDisplay', 'App\Http\Controllers\MstEditTopicController@editDis
 Route::get('/update', 'App\Http\Controllers\MstEditTopicController@update');
 Route::post('/update', 'App\Http\Controllers\MstEditTopicController@update');
 
-// ユーザー登
+// センテンス登録
+Route::get('/create', 'App\Http\Controllers\MstRegisterTopicController@create');
+Route::post('/create', 'App\Http\Controllers\MstRegisterTopicController@create');
+
+// ユーザー登録
 Route::get('/userCreate', 'App\Http\Controllers\UserRegistController@create');
 Route::post('/userCreate', 'App\Http\Controllers\UserRegistController@create');
+
+// ユーザー画面
+Route::post('/submitTopic', 'App\Http\Controllers\PlayController@submitTopic');
+Route::get('/submitTopic', 'App\Http\Controllers\PlayController@submitTopic');
 
 // ログアウト
 Route::get('/typingSite/logout', 'App\Http\Controllers\HomeController@logout');

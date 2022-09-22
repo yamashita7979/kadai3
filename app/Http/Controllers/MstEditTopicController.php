@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Topic;
+use Illuminate\Support\Facades\Auth;
 
 class MstEditTopicController extends Controller
 {
@@ -17,7 +18,7 @@ class MstEditTopicController extends Controller
             return view('/typingSite/login');
         }
 
-        $topics = Topic::all();
+        $topics = Topic::paginate(5);
         return view('typingSite.mstEditTopic', [
             'topics' => $topics,
         ]);
