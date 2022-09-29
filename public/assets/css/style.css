@@ -1,35 +1,55 @@
 /* 共通 */
 body {
     padding: 20px;
-    height: 300px;
+    height: auto;
     width: 640px;
     position: relative;
     margin: 0 auto;
-    border: solid;
+    /* border: solid; */
+    background: antiquewhite;
 }
-.content {
+
+form, .content {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%);
     padding: 20px;
 }
 
-/* start.blade.php */
-.yell{
-    padding-left: 20px;
-}
-.hands-start{
-    margin-left: 15px;
+form {
+    transform: translateY(-50%) translateX(-50%);
 }
 
-/* end.blade.php */
-.submit-btn-parent{
-    display: inline-block;
-    text-align: center;
-    margin-top: 40px;
-    margin-left: 50px;
+.content {
+    transform: translateY(-29%) translateX(-32%);
 }
-.hands{
-    display: flex;
+
+form a {
+    display: block;
+    text-align: center;
+}
+
+form p, .content p {
+    font-size: larger;
+    text-align: center;
+}
+
+form .description label, form .image label {
+    float: left;
+}
+
+td input {
+    float: right;
+    width: 130%;    
+}
+
+form .submit {
+    display: block;
+    height: 30px;
+    margin: 20px auto;
+    width: 50%;
+}
+
+.description, td {
+    white-space: nowrap;
 }

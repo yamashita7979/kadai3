@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/regist', 'App\Http\Controllers\ItemRegistrationController@index');
 
-Route::get('/janken', 'App\Http\Controllers\JankenController@index');
+Route::post('create', 'App\Http\Controllers\ItemRegistrationController@create');
 
-Route::post('/janken', 'App\Http\Controllers\JankenController@result');
+Route::get('/view', 'App\Http\Controllers\BuyController@view');
+
+Route::post('tocart', 'App\Http\Controllers\BuyController@toCart');
