@@ -7,7 +7,7 @@ use App\Models\Item;
 
 class ItemRegistrationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         return view('shoppingsite.itemRegistration');
     }
@@ -38,7 +38,6 @@ class ItemRegistrationController extends Controller
 
         //（画像以外の情報を）DBに登録
         $item->save();
-
         return redirect('/regist');
     }
 }

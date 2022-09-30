@@ -21,12 +21,41 @@ form {
 }
 
 .content {
-    transform: translateY(-29%) translateX(-32%);
+    transform: translateY(-19%) translateX(-32%);
 }
 
 form a {
     display: block;
     text-align: center;
+}
+
+.buy-title {
+    font-size: 19px;
+    position: absolute;
+    top: -44px;
+    right: 147px;
+}
+
+.cart-title {
+    font-size: 19px;
+    position: absolute;
+    bottom: 278px;
+    right: 103px;
+    white-space: nowrap;
+}
+
+.link-cart {
+    font-size: 20px;
+    position: absolute;
+    bottom: 268px;
+}
+
+.img-cart {
+    width: 46px;
+    display: block;
+    position: absolute;
+    bottom: 14px;
+    right: 258px;
 }
 
 form p, .content p {
@@ -52,4 +81,25 @@ form .submit {
 
 .description, td {
     white-space: nowrap;
+}
+
+.div-clearcart {
+    font-size: 19px;
+    position: absolute;
+    bottom: 176px;
+    right: 140px;
+}
+
+.div-clearcart-buy {
+    font-size: 19px;
+    position: absolute;
+    bottom: 165px;
+    right: 2px;
+}
+
+.div-buyitems {
+    font-size: 19px;
+    position: absolute;
+    bottom: 176px;
+    right: 2px;
 }
